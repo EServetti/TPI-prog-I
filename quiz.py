@@ -19,14 +19,14 @@ def cuestionario_prog():
 #puntuacion con la que arranca.
     puntuacion = 0
 
-    print(nombre_usuario " bienvenido a este mini-cuestionario de preguntas faciles")
+    print(nombre_usuario+ " bienvenido a este mini-cuestionario de preguntas faciles")
     
     for pregunta in preguntas: #es un conjunto que representan las claves del conjunto
         print("\n" + pregunta)
         for opcion in opciones[pregunta]:
             print(opcion)
 
-        respuesta = input(nombre_usuario " seleccione la respuesta correcta: ").lower()
+        respuesta = input(nombre_usuario+ " seleccione la respuesta correcta: ").lower()
         
         if respuesta == preguntas[pregunta]:
             #si la opcion es igual a la que indicaba arriba muestra: 
@@ -34,7 +34,6 @@ def cuestionario_prog():
             puntuacion += 1
         else:
             print("Incorrecto. La respuesta correcta era la opcion: {}".format(preguntas[pregunta]))
-
-    print(nombre_usuario " tu puntuacion final es: ".format(puntuacion, len(preguntas)))
+    print(nombre_usuario+ " tu puntuacion final es: " + str(puntuacion)+"/"+str(len(preguntas)))
 
 cuestionario_prog()
