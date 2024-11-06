@@ -32,5 +32,3 @@ def jugar_piedra_papel_tijera():
             jugar_piedra_papel_tijera()
         else:
             print("Gracias por jugar!")
-# Aca ejecuto la funcion.
-jugar_piedra_papel_tijera()

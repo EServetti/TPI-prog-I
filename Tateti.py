@@ -177,4 +177,3 @@ def jugar_tateti():
 
     pygame.quit()
 
-jugar_tateti()
