@@ -61,7 +61,7 @@ def jugar_tateti():
         victorias = obtener_victorias()
         fuente = pygame.font.Font(None, 36)  # Fuente utilizada para el contador
         
-        # Se ajustan la posición del texto de los contadores
+        # Se ajusta la posición del texto de los contadores
         texto_x = fuente.render(f"Victorias X: {victorias['X']}", True, (255, 0, 0))
         texto_o = fuente.render(f"Victorias O: {victorias['O']}", True, (0, 0, 255))
         
@@ -102,7 +102,7 @@ def jugar_tateti():
                     dibujar_x(fila, col)
                 elif tablero[fila][col] == "O":
                     dibujar_O(fila, col)
-        mostrar_victorias()  # Mostrar victorias cada vez que se grafica el tablero
+        mostrar_victorias()  # Muestra victorias cada vez que se grafica el tablero
 
     def dibujar_x(fila, col):
         pantalla.blit(equis, coor[fila][col])
@@ -176,4 +176,6 @@ def jugar_tateti():
         Turno = "X"
 
     pygame.quit()
-
+    
+    jugar_tateti()
+    
