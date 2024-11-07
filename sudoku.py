@@ -58,4 +58,3 @@ def sudoku():
         if again.lower() != 'si':
             print("Gracias por jugar. ¡Hasta luego!")
             break
-sudoku()        

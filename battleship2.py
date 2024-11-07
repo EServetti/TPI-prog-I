@@ -98,5 +98,4 @@ def play_game():
         print("¡Has perdido el juego!")
     print(f"Tu puntuación final es: {player_score}")
 
-# Iniciar el juego
-play_game()
+

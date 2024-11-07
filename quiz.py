@@ -1,5 +1,6 @@
-nombre_usuario = input("Ingrese su nombre: ")
+
 def cuestionario_prog():
+    nombre_usuario = input("Ingrese su nombre: ")
     preguntas = {
         "¿Cuál es la capital de Francia?": "3",
         "¿Cuántos continentes hay en el mundo?": "2",
@@ -36,4 +37,3 @@ def cuestionario_prog():
             print("Incorrecto. La respuesta correcta era la opcion: {}".format(preguntas[pregunta]))
     print(nombre_usuario+ " tu puntuacion final es: " + str(puntuacion)+"/"+str(len(preguntas)))
 
-cuestionario_prog()

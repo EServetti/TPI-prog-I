@@ -1,9 +1,10 @@
 import random
-# Lista de posibles palabras.
-palabras = ["programacion","codigo","universidad","estudio","algoritmo"]
-# Sortea una palabra de la lista para usar en el juego.
-palabra = palabras[random.randint(0, len(palabras) -1)]
-def ahorcado(palabra):
+
+def ahorcado():
+    # Lista de posibles palabras.
+    palabras = ["programacion","codigo","universidad","estudio","algoritmo"]
+    # Sortea una palabra de la lista para usar en el juego.
+    palabra = palabras[random.randint(0, len(palabras) -1)]
     incognita = []
     letras = []
     for l in palabra:
@@ -114,4 +115,4 @@ def ahorcado(palabra):
     if vidas == 0:
       print(ahorcado_dibujos[6], "Juego terminado, perdiste.")
                             
-ahorcado(palabra)
+
