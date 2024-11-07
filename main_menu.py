@@ -4,6 +4,7 @@ from piedra_papel_tijera import jugar_piedra_papel_tijera
 from quiz import cuestionario_prog
 from sudoku import sudoku
 from Tateti import jugar_tateti
+from battleship2 import play_game
 
 
 def menu():
@@ -38,5 +39,8 @@ def menu():
             seguir_jugando = int(input("Seguir jugando? 1: Si 0: No "))
         elif juego == 6:
             jugar_tateti()
+            seguir_jugando = int(input("Seguir jugando? 1: Si 0: No "))
+        elif juego == 7:
+            play_game()
             seguir_jugando = int(input("Seguir jugando? 1: Si 0: No "))
 menu()

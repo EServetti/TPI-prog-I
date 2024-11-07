@@ -32,7 +32,7 @@ def sudoku():
             print_board(board)
 
             try:
-                move = input("Ingrese su jugada en formato 'fila(0-8) col(0-8) num(0-9)' (o 'salir' para terminar): ")
+                move = input("Ingrese su jugada en formato 'fila(0-8) col(0-8) num(1-9)' (o 'salir' para terminar): ")
                 if move.lower() == 'salir':
                     print("Gracias por jugar. ¡Hasta luego!")
                     break
@@ -58,4 +58,3 @@ def sudoku():
         if again.lower() != 'si':
             print("Gracias por jugar. ¡Hasta luego!")
             break
-        
