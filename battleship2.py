@@ -17,16 +17,24 @@ def create_board(size):
 
 # Colocar los barcos de forma aleatoria en el tablero de la computadora
 def place_ships(board, ship_sizes, ship_symbols):
-    ship_positions = []
     for size, symbol in zip(ship_sizes, ship_symbols):
-        for _ in range(size):
-            x = random.randint(0, len(board) - 1)
-            y = random.randint(0, len(board) - 1)
-            while (x, y) in ship_positions:
+        placed = False
+        while not placed:
+            orientation = random.choice(['horizontal', 'vertical'])
+            if orientation == 'horizontal':
                 x = random.randint(0, len(board) - 1)
+                y = random.randint(0, len(board) - size)
+                if all(board[x][y + i] == 'O' for i in range(size)):
+                    for i in range(size):
+                        board[x][y + i] = symbol
+                    placed = True
+            else:  # vertical
+                x = random.randint(0, len(board) - size)
                 y = random.randint(0, len(board) - 1)
-            board[x][y] = symbol
-            ship_positions.append((x, y))
+                if all(board[x + i][y] == 'O' for i in range(size)):
+                    for i in range(size):
+                        board[x + i][y] = symbol
+                    placed = True
     return board
 
 # Mostrar el tablero del jugador
@@ -59,7 +67,6 @@ def play_game():
     print("Niveles de juego:")
     for level, info in LEVELS.items():
         print(f"Nivel {level}: Tablero de {info['size']}x{info['size']} y barcos de tamaños {', '.join(map(str, info['ships']))}")
-    print(f"Barcos disponibles: {', '.join(SHIP_SYMBOLS)}")
 
     level = int(input("Elige el nivel de juego (1-4): "))
     if level not in LEVELS:
@@ -73,29 +80,32 @@ def play_game():
     player_score = 0
     ships_left = sum(ship_sizes)
 
-    while ships_left > 0 and player_score < 100:
+    while ships_left > 0:
         display_player_board(player_board)
         print(f"Puntuación: {player_score}")
 
         player_shot_x, player_shot_y = get_player_shot(player_board)
-        if any(computer_board[player_shot_x][player_shot_y] == symbol for symbol in SHIP_SYMBOLS):
+        if computer_board[player_shot_x][player_shot_y] in SHIP_SYMBOLS:
             print("¡Impacto! Has hundido un barco.")
             player_score -= 20
-            for symbol in SHIP_SYMBOLS:
-                if computer_board[player_shot_x][player_shot_y] == symbol:
-                    computer_board[player_shot_x][player_shot_y] = 'X'
-                    ships_left -= 1
-                    break
+            symbol_hit = computer_board[player_shot_x][player_shot_y]
+            computer_board[player_shot_x][player_shot_y] = 'X'
+            ships_left -= 1
             player_board = update_player_board(player_board, player_shot_x, player_shot_y, 'X')
         else:
             print("Fallaste. Intenta de nuevo.")
             player_score += 5
             player_board = update_player_board(player_board, player_shot_x, player_shot_y, 'M')
 
+    # Felicitación al ganar
     if player_score >= 100:
-        print("¡Felicidades, has ganado el juego!")
+            print("¡Has alcanzado 100 puntos! Has perdido el juego.")
+            print(f"Tu puntuación final es: {player_score}")
+            return
     else:
-        print("¡Has perdido el juego!")
-    print(f"Tu puntuación final es: {player_score}")
+        print("¡Felicidades, has hundido todos los barcos! ¡Eres un gran capitán!")
+        print(f"Tu puntuación final es: {player_score}")
 
+# Iniciar el juego
+play_game()
 
