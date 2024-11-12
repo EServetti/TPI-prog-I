@@ -33,7 +33,3 @@ def jugar_piedra_papel_tijera():
         else:
             print("Gracias por jugar!")
 
-
-# Ejecutamos la funcion
-jugar_piedra_papel_tijera()
-
