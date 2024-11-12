@@ -106,6 +106,3 @@ def play_game():
         print("¡Felicidades, has hundido todos los barcos! ¡Eres un gran capitán!")
         print(f"Tu puntuación final es: {player_score}")
 
-# Iniciar el juego
-play_game()
-
